@@ -45,7 +45,7 @@ class FatTreeTopo(Topo):
             host = self.addHost('h%s' % (i + 1))
             self.hosts.append(host)
 
-        def create_links(self):
+    def create_links(self):
         # Connect core switches to aggregate switches
         for i in range(int(self.k/2)):
             for j in range(int(self.k/2)):
