@@ -50,7 +50,7 @@ class FatTree( Topo ):
     """
 
     def _addSwitch(self, number, level, switch_list):
-        for x in xrange(1, number+1):
+        for x in range(1, number+1):
             PREFIX = str(level) + "00"
             if x >= int(10):
                 PREFIX = str(level) + "0"
@@ -70,7 +70,7 @@ class FatTree( Topo ):
 
     def createHost(self, NUMBER):
         logger.debug("Create Host")
-        for x in xrange(1, NUMBER+1):
+        for x in range(1, NUMBER+1):
             PREFIX = "h00"
             if x >= int(10):
                 PREFIX = "h0"
@@ -84,9 +84,9 @@ class FatTree( Topo ):
     def createLink(self, bw_c2a=0.2, bw_a2e=0.1, bw_h2a=0.5):
         logger.debug("Add link Core to Agg.")
         end = self.pod/2
-        for x in xrange(0, self.iAggLayerSwitch, end):
-            for i in xrange(0, end):
-                for j in xrange(0, end):
+        for x in range(0, self.iAggLayerSwitch, end):
+            for i in range(0, end):
+                for j in range(0, end):
                     linkopts = dict(bw=bw_c2a) 
                     self.addLink(
                         self.CoreSwitchList[i*end+j],
@@ -94,17 +94,17 @@ class FatTree( Topo ):
                         **linkopts)
 
         logger.debug("Add link Agg to Edge.")
-        for x in xrange(0, self.iAggLayerSwitch, end):
-            for i in xrange(0, end):
-                for j in xrange(0, end):
+        for x in range(0, self.iAggLayerSwitch, end):
+            for i in range(0, end):
+                for j in range(0, end):
                     linkopts = dict(bw=bw_a2e) 
                     self.addLink(
                         self.AggSwitchList[x+i], self.EdgeSwitchList[x+j],
                         **linkopts)
 
         logger.debug("Add link Edge to Host.")
-        for x in xrange(0, self.iEdgeLayerSwitch):
-            for i in xrange(0, self.density):
+        for x in range(0, self.iEdgeLayerSwitch):
+            for i in range(0, self.density):
                 linkopts = dict(bw=bw_h2a) 
                 self.addLink(
                     self.EdgeSwitchList[x],
