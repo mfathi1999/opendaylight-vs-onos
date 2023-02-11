@@ -72,4 +72,4 @@ class FatTreeTopo(Topo):
                 bw=10, delay='3ms', loss=3
             )
 
-topos = { 'fattree' : ( lambda k : FatTree(k)) }
+topos = { 'fattree' : ( lambda k : FatTreeTopo(k)) }
